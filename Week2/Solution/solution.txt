@@ -1,3 +1,6 @@
+-Note: In sqlite3, the foreign key needs to be enabled before using it, to enable it- 
+PRAGMA foreign_keys=ON;
+
 1. Create table 
 A)Student table 
 
