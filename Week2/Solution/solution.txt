@@ -1,0 +1,49 @@
+-Note: In sqlite3, the foreign key needs to be enabled before using it, to enable it- 
+PRAGMA foreign_keys=ON;
+
+1. Create table 
+A)Student table 
+
+CREATE TABLE student
+(
+id int PRIMARY KEY,
+name text
+);
+
+B)Student detail table
+
+CREATE TABLE stud_detail
+(
+sid,
+city text,
+mob_no number,
+FOREIGN KEY (sid)  
+REFERENCES student(id)  
+);
+
+
+2. Insert minimum 10 records for each table.
+A)Student table 
+
+INSERT INTO student
+VALUES(1,'Harsh'),(2,'Vatsal'),(3,'Jay'),(4,'Vishual'),(5,'Meet'),(6,'Roshan'),(7,'Meghraj'),(8,'Rakesh'),(9,'Ravi'),(10,'Raj');
+
+B)Student detail table
+
+INSERT INTO stud_detail
+VALUES(1,'Bardoli',7999000999),(2,'Surat',8889990008),(3,'Ahmedabad',7778887779),(4,'Bardoli',9098887772),(5,'Surat',9998880007),(6,'Ahmedabad',9778887779),(7,'Surat',7798880007),(8,'Bardoli',8898887772),(9,'Bardoli',8978887772),(10,'Ahmedabad',7898887772);
+
+
+3. Display whose student come from the Surat City.
+
+SELECT s.id, s.name, sd.city, sd.mob_no FROM student s INNER JOIN stud_detail sd ON s.id = sd.sid WHERE sd.city LIKE 'Surat';
+
+
+4. Display student details whose city name start with 'B'.
+
+SELECT s.id, s.name, sd.city, sd.mob_no FROM student s INNER JOIN stud_detail sd ON s.id = sd.sid WHERE sd.city LIKE 'B%';
+
+
+5. Update mobileno who are coming from 'Surat'
+
+UPDATE stud_detail SET mob_no='8888000079' WHERE city LIKE 'Surat';
